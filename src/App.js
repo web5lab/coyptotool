@@ -54,6 +54,7 @@ export default function App() {
   const xSpreadSheet = useRef(null);
   const exportButton = useRef(null);
   const readAsBinaryStringCheckBox = useRef(null);
+  const [testdata, settestdata] = useState();
   const [readAsBinaryString, setReadAsBinaryString] = useState(() => {
     const rABS =
       typeof FileReader !== "undefined" &&
@@ -108,6 +109,10 @@ export default function App() {
     XLSX.writeFile(new_wb, "sheetjs.xlsx", {});
   }
 
+  const getData = (e) =>{
+    console.log(e);
+     settestdata(e);
+  }
   /* update x-spreadsheet */
   useEffect(() => {
     if (data) {
@@ -145,6 +150,8 @@ export default function App() {
           ref={exportButton}
         />
       </p> */}
+      <h1>{testdata}</h1>
+      <input type={'text'} onChange={e=>getData(e.target.value)}></input>
       <div id="htmlout" ref={xSpreadSheet}></div>
       <br />
     </div>
