@@ -1,18 +1,23 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#drop {
+  border: 2px dashed #bbb;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  font: 20pt bold, "Vollkorn";
+  color: #bbb;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#b64data {
+  width: 100%;
+  margin: 10px;
 }
 .navbar{
   display: flex;
@@ -40,6 +45,15 @@
 .navbar_web5lab_logo{
   width: 62px;
 
+}
+
+.testnet_btn{
+  text-decoration: none;
+  color: #282c34;
+  font-weight: 900;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #ffffff;
 }
 
 .navbar_left{

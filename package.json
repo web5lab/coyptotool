@@ -18,7 +18,9 @@
     "react-modal": "^3.16.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^2.1.4",
-    "web3": "^1.8.1"
+    "web3": "^1.8.1",
+    "x-data-spreadsheet": "^1.1.9",
+    "xlsx": "^0.15.1"
   },
   "scripts": {
     "start": "react-scripts start",
