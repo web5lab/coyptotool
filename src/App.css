@@ -16,21 +16,46 @@
 }
 .navbar{
   display: flex;
-  float: left;
-  margin-left: 28px;
   margin-top: 12px;
-  /* justify-content: center; */
   align-items: center;
-  width: 80vw;
+  width: 100vw;
   height: 10vh;
   background-color:#282c34;
   color: white;
   font-size: 12px;
 }
+.btn{
+  padding: 12px;
+  font-weight: 900;
+  border: none;
+  border-radius: 12px;
+  margin: 12px;
+}
+
+.input_box{
+  width: 50vw;
+  height: 38vh;
+}
 
 .navbar_web5lab_logo{
   width: 62px;
 
+}
+
+.navbar_left{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+
+.navbar_right{
+  margin-right: 46px;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  align-items: center;
+  float: right;
 }
 
 .app_content{
