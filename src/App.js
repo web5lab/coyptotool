@@ -29,7 +29,7 @@ const ConnectWallet = async() => {
   return (
     <div className="App">
       <header className="App-header">
-        <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>TestNet Version</h1></div><div className='navbar_right'><button className='Connect_Btn btn' onClick={ConnectWallet}>Connect Wallet</button></div></div>
+        <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>Powerd By Web5lab</h1></div><div className='navbar_right'><a className='testnet_btn' href='https://testnet.cryptotool.in'>TestNet version</a><button className='Connect_Btn btn' onClick={ConnectWallet}>Connect Wallet</button></div></div>
         <div className='app_content'>
           <input type={'text'} className="input_box"></input>
         </div>
@@ -51,3 +51,4 @@ const ConnectWallet = async() => {
     </div>
   );
 }
+export default App;

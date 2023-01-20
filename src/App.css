@@ -47,6 +47,15 @@
 
 }
 
+.testnet_btn{
+  text-decoration: none;
+  color: #282c34;
+  font-weight: 900;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #ffffff;
+}
+
 .navbar_left{
   width: 50%;
   display: flex;
