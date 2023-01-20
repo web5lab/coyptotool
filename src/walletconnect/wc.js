@@ -1,9 +1,8 @@
 import walletConnectModule from "@web3-onboard/walletconnect";
 import injectedModule from "@web3-onboard/injected-wallets";
 import Onboard from "@web3-onboard/core";
-import { ToastError, ToastSuccess } from "../components/toast";
 import { ethers } from "ethers";
-import { RpcUrl } from "./config";
+import { RpcUrl, ChainId } from "./config";
 
 
 const walletConnect = walletConnectModule(
@@ -22,11 +21,11 @@ const onboard = Onboard({
     wallets: modules, // created in previous step
     chains: [
         {
-            id: 56,
+            id: ChainId.bsc_testnet,
             token: "BNB",
             namespace: "evm",
             label: "Binance Smart Chain",
-            rpcUrl: RpcUrl
+            rpcUrl: RpcUrl.bsc_testnet
         }
     ],
     appMetadata: {
@@ -51,11 +50,9 @@ export const WalletConnect = async () => {
             Chain: chains[0],
             signer: ethersProvider.getSigner()
         }
-        ToastSuccess('Connected To ' + accounts[0].address.slice(0, 4) + '...' + accounts[0].address.slice(-3) + 'Sucessfully')
         return obj;
     } catch (error) {
-        console.log('Error In Wallet Connect:' + error)
-        ToastError("Erorr in Wallet Connect");
+        console.log(error);
     }
 }
 

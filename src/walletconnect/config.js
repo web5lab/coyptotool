@@ -1,9 +1,27 @@
-export const RpcUrl = " https://bsc-dataseed.binance.org/";
-export const Zepcoin_Address = "0x0Af7aeE626B2641cb1c91c4D42F903D37D88148F";
-export const Ico_Address = "0xd68a4dde353e88f99f45379899698b5a8d6dca5f";
-export const Usdt_Address = "0x55d398326f99059fF775485246999027B3197955";
-export const Busd_Address = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
-export const Zepcoin_Abi = require("../contract/Zepcoin.json");
-export const Usdt_Abi = require("../contract/usdt-abi.json");
-export const Ico_Abi = require("../contract/ico-abi.json");
-export const Busd_Abi = require("../contract/Busd.json");
+export const RpcUrl = {
+    bsc_testnet:"https://data-seed-prebsc-1-s1.binance.org:8545/",
+    polygon_testnet:"",
+    avax_testnet:"",
+    eth_rinkebay:"",
+    eth_kovan:"",
+    eth_goeril:"",
+    tron_testnet:""
+}
+export const MasterContract = {
+    bsc_testnet: "",
+    polygon_testnet:"",
+    avax_testnet:"",
+    eth_rinkebay:"",
+    eth_kovan:"",
+    eth_goeril:"",
+    tron_testnet:""
+}
+export const ChainId ={
+    bsc_testnet:97,
+    polygon_testnet:0,
+    avax_testnet:0,
+    eth_rinkebay:0,
+    eth_kovan:0,
+    eth_goeril:0,
+    tron_testnet:0
+}

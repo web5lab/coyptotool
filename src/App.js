@@ -1,6 +1,8 @@
 import './App.css';
 import { useState } from 'react';
 import ReactModal from 'react-modal';
+import { WalletConnect } from './walletconnect/wc';
+
 const customStyles = {
   content: {
     top: '50%',
@@ -20,10 +22,14 @@ const CloseModal =() => {
   setmodal(false)
 }
 
+const ConnectWallet = async() => {
+  const wc = await WalletConnect()
+}
+
   return (
     <div className="App">
       <header className="App-header">
-        <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>Powered By Web5Lab</h1></div><div className='navbar_right'><button className='Connect_Btn btn'>Connect Wallet</button></div></div>
+        <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>TestNet Version</h1></div><div className='navbar_right'><button className='Connect_Btn btn' onClick={ConnectWallet}>Connect Wallet</button></div></div>
         <div className='app_content'>
           <input type={'text'} className="input_box"></input>
         </div>
