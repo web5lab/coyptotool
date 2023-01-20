@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .App-logo {
@@ -12,14 +14,40 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.navbar{
+  display: flex;
+  float: left;
+  margin-left: 28px;
+  margin-top: 12px;
+  /* justify-content: center; */
+  align-items: center;
+  width: 80vw;
+  height: 10vh;
+  background-color:#282c34;
+  color: white;
+  font-size: 12px;
+}
+
+.navbar_web5lab_logo{
+  width: 62px;
+
+}
+
+.app_content{
+ width: 100vw;
+ height: 80vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
