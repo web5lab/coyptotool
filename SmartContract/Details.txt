@@ -1,0 +1,2 @@
+v1 contract bsctestnet
+v1 contract polygon mumbai testnet

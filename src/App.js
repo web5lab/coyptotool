@@ -45,8 +45,8 @@ const ConnectWallet = async() => {
        onRequestClose={CloseModal}
        style={customStyles}
        contentLabel="Example Modal">
-        <button className='btn'>CloseModal</button>
-        
+        <button className='btn' onClick={CloseModal}>CloseModal</button>
+        <input type={'file'}></input>
       </ReactModal>
     </div>
   );

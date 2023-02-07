@@ -13,8 +13,30 @@ interface IERC20 {
      function balanceOf(address account) external view returns (uint256);
 }
 
-contract cryptotool_multisender {
-    function batch_transfer(
+contract Ownable {
+    address private _owner;
+
+    constructor() {
+        _owner = msg.sender;
+    }
+
+    function owner() public view returns (address) {
+        return _owner;
+    }
+
+    modifier onlyOwner() {
+        require(isOwner(), "Function accessible only by the owner !!");
+        _;
+    }
+
+    function isOwner() public view returns (bool) {
+        return msg.sender == _owner;
+    }
+}
+
+contract crypto_multisend is Ownable {
+
+    function batch_transfer_Erc20(
         address _tokenadress,
         address[] memory _reciver,
         uint256[] memory amount
@@ -24,6 +46,15 @@ contract cryptotool_multisender {
         token.transferFrom(msg.sender, address(this), tamount);
         for (uint256 i = 0; i < _reciver.length; i++) {
             token.transfer(_reciver[i], amount[i]);
+        }
+        return true;
+    }
+
+    function batch_transfer_Native (address [] memory _reciver, uint256[] memory amount) public payable returns (bool) {
+        require (_reciver.length == amount.length, "not correct ammount");
+        require (msg.value == AmountCalc(amount), "insuffice amount send");
+         for(uint i = 0; i < _reciver.length; i++) {
+            payable(_reciver[i]).transfer(amount[i]);
         }
         return true;
     }
@@ -42,7 +73,7 @@ contract cryptotool_multisender {
 
      function withdrawNative(address payable receiver, uint256 amount)
         public
-        payable
+        payable onlyOwner
     {
         uint256 balance = address(this).balance;
         if (amount == 0) {
@@ -52,11 +83,11 @@ contract cryptotool_multisender {
         receiver.transfer(amount);
     }
 
-    function withdrawToken(
+    function WithdrawToken(
         address receiver,
         address tokenAddress,
         uint256 amount
-    ) public payable  {
+    ) public payable onlyOwner {
         uint256 balance = IERC20(tokenAddress).balanceOf(address(this));
         if (amount == 0) {
             amount = balance;
