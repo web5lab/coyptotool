@@ -40,6 +40,18 @@
 .input_box{
   width: 50vw;
   height: 38vh;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+}
+
+.input_box_sub{
+  background-color: #282c34;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  padding-left: 12px;
+  color: white;
+  width: 36px;
+  height: 38vh;
 }
 
 .navbar_web5lab_logo{

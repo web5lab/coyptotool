@@ -1,7 +1,8 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
 import { WalletConnect } from './walletconnect/wc';
+import { data_01 } from './DummyData/data';
 
 var xlsl = require('xlsx');
 
@@ -17,42 +18,64 @@ const customStyles = {
 };
 function App() {
   const [modal, setmodal] = useState(false)
-  const [jsonData, setjsonData] = useState("test data")
-  const OpenModal =() => {
+  const [TxtCounter, setTxtCounter] = useState('')
+  const [txtValue, setTxtValue] = useState('')
+  const OpenModal = () => {
     setmodal(true)
   }
-const CloseModal =() => {
-  setmodal(false)
-}
 
-const readUploadFile = (e) => {
+  const CloseModal = () => {
+    setmodal(false)
+  }
+
+  const ReturnData = () => {
+
+    let finalStr = ''
+    for (let x of data_01) {
+      finalStr = finalStr + x + '\n'
+    }
+    // var Str = JSON.stringify(data_01);
+    return finalStr;
+  }
+
+  const lineCounter = () => {
+    
+  }
+
+  useEffect(() => {
+    setTxtValue(ReturnData())
+  }, [])
+
+
+  const readUploadFile = (e) => {
     e.preventDefault();
     if (e.target.files) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const data = e.target.result;
-            const workbook = xlsl.read(data, { type: "array" });
-            const sheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[sheetName];
-            const json = xlsl.utils.sheet_to_json(worksheet);
-            console.log(JSON.stringify(json));
-            const jsonStr = JSON.stringify(json);
-            setjsonData(jsonStr)
-        };
-        reader.readAsArrayBuffer(e.target.files[0]);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target.result;
+        const workbook = xlsl.read(data, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const json = xlsl.utils.sheet_to_json(worksheet);
+        console.log(JSON.stringify(json));
+        const jsonStr = JSON.stringify(json);
+        setTxtValue(jsonStr)
+      };
+      reader.readAsArrayBuffer(e.target.files[0]);
     }
-}
+  }
 
-const ConnectWallet = async() => {
-  const wc = await WalletConnect()
-}
+  const ConnectWallet = async () => {
+    const wc = await WalletConnect()
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>Powerd By Web5lab</h1></div><div className='navbar_right'><a className='testnet_btn' href='https://cryptotool.in'>Mainet Version</a><button className='Connect_Btn btn' onClick={ConnectWallet}>Connect Wallet</button></div></div>
         <div className='app_content'>
-          <input type={'text'} className="input_box" value={jsonData}></input>
+          <textarea rows={1} cols={1} className="input_box_sub"></textarea>
+          <textarea rows={20} className="input_box" value={txtValue} onChange={(e) => { setTxtValue(e.target.value) }} cols={40}></textarea>
         </div>
         <div>
           <button className='btn' onClick={OpenModal}>import csv file</button>
@@ -61,11 +84,11 @@ const ConnectWallet = async() => {
         </div>
       </header>
       <ReactModal
-       isOpen={modal}
-      //  onAfterOpen={}
-       onRequestClose={CloseModal}
-       style={customStyles}
-       contentLabel="Example Modal">
+        isOpen={modal}
+        //  onAfterOpen={}
+        onRequestClose={CloseModal}
+        style={customStyles}
+        contentLabel="Example Modal">
         <button className='btn' onClick={CloseModal}>CloseModal</button>
         <input type={'file'}></input>
       </ReactModal>
