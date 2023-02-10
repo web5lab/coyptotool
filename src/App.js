@@ -41,10 +41,9 @@ function App() {
   }
    
   
-  const lineCounter = (event) => {
-    let temp = event.target.value.split("\n").length 
+  const lineCounter = (e) => {
+    let temp = e;
     settempCounter(temp);
-    setTxtValue(event.target.value);
     if (tempCounter == temp ) {
       console.log('same number')
     } else {
@@ -56,6 +55,11 @@ function App() {
       }
       setRows(t)
     }
+  }
+
+  const divider = (e) => {
+    setTxtValue(e);
+    lineCounter(e.split("\n").length)
   }
 
   useEffect(() => {
@@ -74,8 +78,10 @@ function App() {
         const worksheet = workbook.Sheets[sheetName];
         const json = xlsl.utils.sheet_to_json(worksheet);
         console.log(JSON.stringify(json));
-        const jsonStr = JSON.stringify(json);
+        const jsonStr = json;
         setTxtValue(jsonStr)
+        const tempx = jsonStr.split('\n').length
+        console.log(tempx);
       };
       reader.readAsArrayBuffer(e.target.files[0]);
     }
@@ -91,7 +97,7 @@ function App() {
         <div className='navbar'><div className='navbar_left'><a href='https://web5lab.net'><img src='media/logo.png' className='navbar_web5lab_logo'></img></a><h1>Powerd By Web5lab</h1></div><div className='navbar_right'><a className='testnet_btn' href='https://cryptotool.in'>Mainet Version</a><button className='Connect_Btn btn' onClick={ConnectWallet}>Connect Wallet</button></div></div>
         <div className='app_content'>
           <textarea rows={1} cols={1} value={rows} className="input_box_sub"></textarea>
-          <textarea rows={20} className="input_box" value={txtValue} onChange={(e) => { lineCounter(e) }} cols={40}></textarea>
+          <textarea rows={20} className="input_box" value={txtValue} onChange={(e) => { divider(e.target.value) }} cols={40}></textarea>
         </div>
         <div>
           <button className='btn' onClick={OpenModal}>import csv file</button>
